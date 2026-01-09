@@ -127,7 +127,6 @@ raw_image_label = tk.Label(
     image_grid,
     width=PREVIEW_W,
     height=PREVIEW_H,
-    bg="grey"
 )
 raw_image_label.grid(row=0, column=0, padx=10, pady=10)
 
@@ -135,7 +134,6 @@ conv_image_label = tk.Label(
     image_grid,
     width=PREVIEW_W,
     height=PREVIEW_H,
-    bg="grey"
 )
 conv_image_label.grid(row=0, column=1, padx=10, pady=10)
 
