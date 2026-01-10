@@ -36,7 +36,7 @@ def conv_image():
     converted_img = cv2.convertScaleAbs(converted_img)
 
     #turn black to blue
-    mask = cv2.inRange(converted_img, 0,60)
+    mask = cv2.inRange(converted_img, 0,slider_threshold.get())
     converted_img= cv2.cvtColor(converted_img, cv2.COLOR_GRAY2BGR)
     converted_img[mask > 0] = [255, 0, 0]
 
@@ -80,7 +80,7 @@ def save_image():
 
 root = Tk()
 root.title("Image to blueprint")
-root.geometry("700x420")
+root.geometry("700x500")
 
 
 
@@ -117,6 +117,11 @@ col_label=tk.Label(button_frame,text="Columns")
 col_label.grid(row=3, column=1, padx=10)
 thk_label=tk.Label(button_frame,text="Thickness")
 thk_label.grid(row=3, column=2, padx=10)
+
+slider_threshold = tk.Scale(button_frame, from_=0, to=255, orient=tk.HORIZONTAL)
+slider_threshold.grid(row=4, column=1, padx=10)
+thk_label=tk.Label(button_frame,text="Filter Threshold")
+thk_label.grid(row=5, column=1, padx=10)
 
 
 #images
