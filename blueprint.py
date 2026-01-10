@@ -120,6 +120,7 @@ thk_label.grid(row=3, column=2, padx=10)
 
 slider_threshold = tk.Scale(button_frame, from_=0, to=255, orient=tk.HORIZONTAL)
 slider_threshold.grid(row=4, column=1, padx=10)
+slider_threshold.set(40)
 thk_label=tk.Label(button_frame,text="Filter Threshold")
 thk_label.grid(row=5, column=1, padx=10)
 
