@@ -28,10 +28,14 @@ def load_file():
 
 def conv_image():
     global converted_img
-    #Sobel filter
     converted_img= cv2.cvtColor(raw_img, cv2.COLOR_BGR2GRAY)
-    img_s_dx = cv2.Sobel(converted_img, cv2.CV_64F, 1, 0)
-    img_s_dy = cv2.Sobel(converted_img, cv2.CV_64F, 0, 1)
+
+    if mode_var.get()==0: #Sobel
+        img_s_dx = cv2.Sobel(converted_img, cv2.CV_64F, 1, 0)
+        img_s_dy = cv2.Sobel(converted_img, cv2.CV_64F, 0, 1)
+    elif mode_var.get()==1: #Scharr
+        img_s_dx = cv2.Scharr(converted_img, cv2.CV_64F, 1, 0)
+        img_s_dy = cv2.Scharr(converted_img, cv2.CV_64F, 0, 1)
     converted_img = cv2.addWeighted(img_s_dx, 0.5, img_s_dy, 0.5, 0)
     converted_img = cv2.convertScaleAbs(converted_img)
 
@@ -119,10 +123,17 @@ thk_label=tk.Label(button_frame,text="Thickness")
 thk_label.grid(row=3, column=2, padx=10)
 
 slider_threshold = tk.Scale(button_frame, from_=0, to=255, orient=tk.HORIZONTAL)
-slider_threshold.grid(row=4, column=1, padx=10)
+slider_threshold.grid(row=4, column=2, padx=10)
 slider_threshold.set(40)
 thk_label=tk.Label(button_frame,text="Filter Threshold")
-thk_label.grid(row=5, column=1, padx=10)
+thk_label.grid(row=5, column=2, padx=10)
+
+mode_var = tk.IntVar(value=0)
+mode_sobel = tk.Radiobutton(button_frame, text="Sobel Filter", variable=mode_var, value=0)
+mode_scharr = tk.Radiobutton(button_frame, text="Scharr Filter", variable=mode_var, value=1)
+mode_sobel.grid(row=4, column=0, padx=10)
+mode_scharr.grid(row=4, column=1, padx=10)
+
 
 
 #images
