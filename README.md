@@ -5,4 +5,4 @@ Convert images to blueprints
 ![Scharr filter](screenshot-scharr.png)
 
 
-Applies a Sobel filter then changes the black to blue. Use the sliders to configure the grid pattern
+Applies a Sobel or Scharr filter then changes the black color to blue. Use the sliders to configure the grid pattern
